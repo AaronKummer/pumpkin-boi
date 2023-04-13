@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bn4h8vdvd5u72"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_0lf4q"]
+[ext_resource type="Texture2D" uid="uid://df6kffq3bo3mh" path="res://Player/pumpkin_dude.png" id="2_kh555"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4b8n1"]
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(2, -4)
+script = ExtResource("1_0lf4q")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -0.999996)
+scale = Vector2(1.5625, 1.125)
+texture = ExtResource("2_kh555")
+hframes = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_4b8n1")
