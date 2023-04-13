@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://buc46dq4c0iff"]
+
+[ext_resource type="Texture2D" uid="uid://csf80fr0n0dhu" path="res://World/moon-glow.png" id="1_66ch5"]
+[ext_resource type="Texture2D" uid="uid://bdlddj2b0a2sk" path="res://World/moon.png" id="2_idl48"]
+[ext_resource type="Script" path="res://World/moonshader-inner.gd" id="4_35t66"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_wuena"]
+
+[node name="Moon2" type="TextureRect"]
+anchors_preset = -1
+anchor_right = 0.002
+offset_left = 3.0
+offset_top = 110.0
+offset_right = 205.44
+offset_bottom = 285.0
+texture = SubResource("ImageTexture_wuena")
+metadata/_edit_group_ = true
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+visible = false
+position = Vector2(604, 203)
+color = Color(0.835294, 0.937255, 0.678431, 1)
+energy = 0.28
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.596078, 0.988235, 0.898039, 1)
+show_behind_parent = true
+position = Vector2(604, 344)
+scale = Vector2(1.59009, 1.22424)
+texture = ExtResource("1_66ch5")
+
+[node name="Moon" type="Sprite2D" parent="."]
+position = Vector2(618.5, 303.25)
+scale = Vector2(0.467773, 0.406738)
+texture = ExtResource("2_idl48")
+script = ExtResource("4_35t66")

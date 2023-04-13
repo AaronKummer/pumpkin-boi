@@ -1,21 +1,84 @@
-[gd_scene load_steps=4 format=3 uid="uid://bn4h8vdvd5u72"]
+[gd_scene load_steps=8 format=3 uid="uid://bn4h8vdvd5u72"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_0lf4q"]
 [ext_resource type="Texture2D" uid="uid://df6kffq3bo3mh" path="res://Player/pumpkin_dude.png" id="2_kh555"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4b8n1"]
 
+[sub_resource type="Animation" id="Animation_amsfd"]
+resource_name = "walk-right"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_m6tsl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_swyux"]
+resource_name = "walk-left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n1ggi"]
+_data = {
+"RESET": SubResource("Animation_m6tsl"),
+"walk-left": SubResource("Animation_swyux"),
+"walk-right": SubResource("Animation_amsfd")
+}
+
 [node name="Player" type="CharacterBody2D"]
+top_level = true
 position = Vector2(2, -4)
 script = ExtResource("1_0lf4q")
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -0.999996)
-scale = Vector2(1.5625, 1.125)
+position = Vector2(-0.25, -1.5)
+scale = Vector2(1.53125, 1.15625)
 texture = ExtResource("2_kh555")
 hframes = 8
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
 shape = SubResource("CircleShape2D_4b8n1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n1ggi")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -80)
